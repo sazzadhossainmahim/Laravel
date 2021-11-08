@@ -115,3 +115,26 @@ class LoginResponse implements ContractsLoginResponse
             LoginResponse::class,
         );
     }
+
+
+
+>>>> Create admin route file views
+----->  route/admin.php
+<?php
+
+
+use Illuminate\support\Facades\Route;
+
+Route::group(['prefix', 'admin', 'as' => 'admin'], function(){
+    
+});
+
+
+>>>make a controller 
+php artisan make:controller Admin/Dashboard
+
+Register into kernal
+
+protected $routeMiddle >>>>>'isAdmin'
+
+
