@@ -4,9 +4,7 @@ use App\Http\Controllers\practice;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [practice::class,"componentindex"])->name('componentindex');
 
 
 Route::post('users', [practice::class, 'indexAction']);
@@ -47,3 +45,19 @@ Route::get('dball',[practice::class,'databaseall']);
 
 // Http Client configuration
 Route::get('httpClient',[practice::class,'httpClient']);
+
+
+//
+Route::get('/h/{n}',[practice::class,'h'])->name('home.index');
+
+// views
+Route::get('hv',[practice::class,'h'])->name('home.user');
+
+
+// Http Response
+Route::get('getHttp',[practice::class,'getHttp']);
+Route::get('getHttpid/{id}',[practice::class,'getHttpid'])->name('posts.getpostsid');
+
+// Fluent string
+Route::get('fluentString',[practice::class,'fluentString']);
+
