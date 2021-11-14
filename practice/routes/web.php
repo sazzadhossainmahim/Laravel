@@ -54,10 +54,14 @@ Route::get('/h/{n}',[practice::class,'h'])->name('home.index');
 Route::get('hv',[practice::class,'h'])->name('home.user');
 
 
-// Http Response
+// Http Respon
 Route::get('getHttp',[practice::class,'getHttp']);
 Route::get('getHttpid/{id}',[practice::class,'getHttpid'])->name('posts.getpostsid');
 
 // Fluent string
 Route::get('fluentString',[practice::class,'fluentString']);
+
+// Http Request Method
+Route::get('httprequest',[practice::class,'httprequest'])->middleware('checkuser');
+Route::post('httpRequestSubmit',[practice::class,'httpRequestSubmit'])->name('httpRequestSubmit');
 

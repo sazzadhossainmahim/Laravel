@@ -79,25 +79,52 @@ class practice extends Controller
         echo $slice2 . '<br>';
 
         $string = Str::of('Hellow')->append('work');
-        echo $string .'<br>';
+        echo $string . '<br>';
 
         $result = Str::of('Laravel 8')->lower();
         echo $result . '<br>';
 
-        $replaced = Str::of('Laravel 8')->replace('8','7');
+        $replaced = Str::of('Laravel 8')->replace('8', '7');
         echo $replaced . '<br>';
 
         $converted = Str::of('this is a title')->title();
-        echo $converted .'<br>';
+        echo $converted . '<br>';
 
         $slug  = Str::of('Laravel 8 Framework')->slug('-');
-        echo $slug .'<br>';
+        echo $slug . '<br>';
 
 
         $str3 = Str::of('this is a')->upper();
-        echo $str3 .'<br>';
+        echo $str3 . '<br>';
     }
 
     // Stub Customization
-    
+
+    // http request and html form
+    public function httprequest()
+    {
+        // for check request
+        // return $request->method();
+        // return $request->fullUrl();
+
+        // $users = 'mahim';
+        // $user = array(
+        //     "name" => "Sazzad",
+        //     "email" => "mahim@gmail.com",
+        //     "phone" => "342342"
+        // );
+        return view('HttpRequest.index');
+    }
+    public function httpRequestSubmit(Request $request)
+    {
+
+        $validator = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:4|max:12',
+        ]);
+        $email = $request->input('email');
+        $password = $request->input('password');
+        return $request->all();
+        // return 'Email : ' . $email . 'Password : ' . $password;
+    }
 }
