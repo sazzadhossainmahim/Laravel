@@ -127,4 +127,30 @@ class practice extends Controller
         return $request->all();
         // return 'Email : ' . $email . 'Password : ' . $password;
     }
+
+    // Http Session
+    public function GetSessionData(Request $request)
+    {
+        if ($request->session->has('name')) {
+            echo $request->session()->get('name');
+        } else {
+            echo 'No data in the session';
+        }
+    }
+    public function StoreSessionData(Request $request)
+    {
+        $request->session()->put('name', 'mahim');
+        echo "Data has been stored";
+    }
+    public function DeleteSessionData(Request $request)
+    {
+        $request->session()->forget('name');
+        echo "Data has been deleted";
+    }
+
+    // Getting Started with Database
+    public function dbStart(){
+        $posts = DB::table('surfsidemedia')->get();
+        return view('DB.posts',compact('posts'));
+    }
 }

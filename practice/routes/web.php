@@ -4,7 +4,7 @@ use App\Http\Controllers\practice;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [practice::class,"componentindex"])->name('componentindex');
+Route::get('/', [practice::class, "componentindex"])->name('componentindex');
 
 
 Route::post('users', [practice::class, 'indexAction']);
@@ -33,35 +33,44 @@ Route::group(['middleware' => ['protectedPages']], function () {
 });
 
 // ------------Route middleware------------
-Route::view('ruser','routehome')->middleware('RprotectedPages');
-Route::view('rhome','routemiddleuser');
-Route::view('rnoaccess','routenoaccess');
+Route::view('ruser', 'routehome')->middleware('RprotectedPages');
+Route::view('rhome', 'routemiddleuser');
+Route::view('rnoaccess', 'routenoaccess');
 
 
 // DAtabse configuration
-Route::get('dbindex',[practice::class,'databaseindex']);
+Route::get('dbindex', [practice::class, 'databaseindex']);
 
-Route::get('dball',[practice::class,'databaseall']);
+Route::get('dball', [practice::class, 'databaseall']);
 
 // Http Client configuration
-Route::get('httpClient',[practice::class,'httpClient']);
+Route::get('httpClient', [practice::class, 'httpClient']);
 
 
 //
-Route::get('/h/{n}',[practice::class,'h'])->name('home.index');
+Route::get('/h/{n}', [practice::class, 'h'])->name('home.index');
 
 // views
-Route::get('hv',[practice::class,'h'])->name('home.user');
+Route::get('hv', [practice::class, 'h'])->name('home.user');
 
 
 // Http Respon
-Route::get('getHttp',[practice::class,'getHttp']);
-Route::get('getHttpid/{id}',[practice::class,'getHttpid'])->name('posts.getpostsid');
+Route::get('getHttp', [practice::class, 'getHttp']);
+Route::get('getHttpid/{id}', [practice::class, 'getHttpid'])->name('posts.getpostsid');
 
 // Fluent string
-Route::get('fluentString',[practice::class,'fluentString']);
+Route::get('fluentString', [practice::class, 'fluentString']);
 
 // Http Request Method
-Route::get('httprequest',[practice::class,'httprequest'])->middleware('checkuser');
-Route::post('httpRequestSubmit',[practice::class,'httpRequestSubmit'])->name('httpRequestSubmit');
+Route::get('httprequest', [practice::class, 'httprequest'])->middleware('checkuser');
+Route::post('httpRequestSubmit', [practice::class, 'httpRequestSubmit'])->name('httpRequestSubmit');
 
+// Http Session
+Route::get('/httpSession/get', [practice::class, 'GetSessionData'])->name('session.get');
+Route::get('/httpSession/set', [practice::class, 'StoreSessionData'])->name('session.store');
+Route::get('/httpSession/remove', [practice::class, 'DeleteSessionData'])->name('session.delete');
+
+
+//
+// Getting Started with database
+Route::get('/dbStart', [practice::class, 'dbStart'])->name('dbStart');
