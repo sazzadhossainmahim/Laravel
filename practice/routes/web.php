@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\crud;
 use App\Http\Controllers\practice;
 use Illuminate\Support\Facades\Route;
 
@@ -74,3 +75,10 @@ Route::get('/httpSession/remove', [practice::class, 'DeleteSessionData'])->name(
 //
 // Getting Started with database
 Route::get('/dbStart', [practice::class, 'dbStart'])->name('dbStart');
+
+Route::get('/crudadd',[crud::class, 'createcrud'])->name('createcrud');
+Route::post('/crudpost',[crud::class, 'createcrudSubmit'])->name('crudpost');
+
+
+// using modal
+Route::get('modal',[practice::class, 'modal',])->name('modal');

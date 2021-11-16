@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\practice as ModelsPractice;
 use Illuminate\Http\Request;
 // database
 use Illuminate\Support\Facades\DB;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Http;
 use League\Flysystem\Adapter\Polyfill\StreamedTrait;
 use Illuminate\Support\Str;
 // http routes Client
+
 
 
 class practice extends Controller
@@ -152,5 +154,11 @@ class practice extends Controller
     public function dbStart(){
         $posts = DB::table('surfsidemedia')->get();
         return view('DB.posts',compact('posts'));
+    }
+
+    // modal
+    public function modal(){
+        $posts = ModelsPractice::all();
+        return $posts;
     }
 }
