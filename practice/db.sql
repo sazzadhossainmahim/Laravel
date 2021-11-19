@@ -1,12 +1,10 @@
-CREATE Table mahim(
+INSERT into posts(name,age,gender,address)
+values(
+    'as','23','female','gazilla',
 
-     id integer,
-     name varchar(255)
 );
 
+SHOW TABLES;
 
-SELECT laravel
-CREATE TABLE mahim(
-    id integer,
-    facx varchar(255)
-);
+SELECT * from posts;
+
