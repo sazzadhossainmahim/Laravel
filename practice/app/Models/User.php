@@ -42,4 +42,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function phone(){
+        return $this->hasOne('App\Models\Phone');
+    }
+    // one to one
+    public function onetoonephone(){
+        return $this->hasOne('App\Models\Phone');
+    }
+
 }

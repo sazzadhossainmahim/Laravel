@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\crud;
 use App\Http\Controllers\practice;
+use App\PaymentGateway\Payment;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,7 +20,7 @@ Route::view('middlewarenoaccess', "middlewarenoaccess");
 
 
 Route::fallback(function () {
-    return "error page not found";
+    return view('errors.404');
 });
 
 
@@ -82,3 +83,19 @@ Route::post('/crudpost',[crud::class, 'createcrudSubmit'])->name('crudpost');
 
 // using modal
 Route::get('modal',[practice::class, 'modal',])->name('modal');
+
+
+// Facades fro payment gateway
+Route::get('payment',function(){
+    return Payment::process();
+});
+
+
+// eloquent
+Route::get('eloquent',[practice::class, 'eloquent']);
+
+// eloquent one to many
+
+Route::get('onetoone',[practice::class, 'onetoone']);
+
+

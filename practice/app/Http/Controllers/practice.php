@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Eloquent;
+use App\Models\Phone;
 use App\Models\practice as ModelsPractice;
 use Illuminate\Http\Request;
 // database
@@ -160,5 +162,25 @@ class practice extends Controller
     public function modal(){
         $posts = ModelsPractice::all();
         return $posts;
+    }
+
+    // Eloquent
+    public function eloquent(){
+        $eloquent = Eloquent::whereBetween('id',[33,44])->get();
+        return $eloquent;
+    }
+
+    // eloquent relation one to one
+    public function onetoone(){
+        $phone = new Phone();
+        $phone->phone= "1231231";
+        $user = new User();
+        $user->name= "mahime";
+        $user->email= "Mahim@gmail.com";
+        $user->password= encrypt('secret');
+        $user->save();
+        $user->phone()->save($phone);
+        return "Record has been created successfully";
+        
     }
 }
