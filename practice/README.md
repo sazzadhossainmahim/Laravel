@@ -31,3 +31,11 @@ for creating services providers
     eloquent one to one 
     
 }
+
+<!-- -----------------------------User Login And Management System -->
+
+{
+    <!-- Seeding users and roles using faker  -->
+    >> php artisan make:seeder UserSeeder
+    >> php artisan tinker
+}

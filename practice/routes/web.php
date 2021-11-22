@@ -99,3 +99,8 @@ Route::get('eloquent',[practice::class, 'eloquent']);
 Route::get('onetoone',[practice::class, 'onetoone']);
 
 
+// -----------login and registration
+
+Route::get('',function(){
+    return view('index');
+});

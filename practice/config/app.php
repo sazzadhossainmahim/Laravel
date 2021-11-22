@@ -163,6 +163,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
 
+        // Fortify
+        App\Providers\FortifyServiceProvider::class,
+
 
         /*
          * Package Service Providers...
