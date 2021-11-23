@@ -2,4 +2,6 @@
 
 @section('content')
 <h1>Hi from index</h1>
+{{-- <x-header names="serve" :fruits="$fruits" /> --}}
+
 @endsection

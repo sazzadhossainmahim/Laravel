@@ -23,9 +23,9 @@
 </head>
 
 <body>
+   
 
 
-    {{-- <x-header names="serve" :fruits="$fruits" /> --}}
     <main>
         @yield('content')
     </main>
