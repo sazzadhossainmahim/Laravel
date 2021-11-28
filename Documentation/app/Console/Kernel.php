@@ -18,6 +18,11 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
     }
 
+    //
+    protected $command= [
+        Command\Hello::class
+    ];
+
     /**
      * Register the commands for the application.
      *
