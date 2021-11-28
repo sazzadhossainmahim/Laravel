@@ -15,6 +15,13 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->integer('order_id');
+            $table->integer('paid_amount');
+            $table->integer('balance');
+            $table->string('payment_method')->default('cash'); //bank transfer
+            $table->integer('user_id');
+            $table->date('transac_date');
+            $table->integer('transc_amount');
             $table->timestamps();
         });
     }
