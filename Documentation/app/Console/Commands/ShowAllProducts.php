@@ -5,21 +5,21 @@ namespace App\Console\Commands;
 use App\Models\Product;
 use Illuminate\Console\Command;
 
-class CreateNewProduct extends Command
+class ShowAllProducts extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'create:product';
+    protected $signature = 'show:product';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command a new product thought artisan';
+    protected $description = 'Show All Products';
 
     /**
      * Create a new command instance.
@@ -34,21 +34,12 @@ class CreateNewProduct extends Command
     /**
      * Execute the console command.
      *
-     * @return int
+     * @return array
      */
     public function handle()
     {
-      $title = $this->ask('What is the Product title?');
-      $original_price = $this->ask('What is the Product price?');
-      $in_stock = $this->ask('What is the Product stock?');
 
-      
-
-      Product::create([
-        'title' => $title,
-        'original_price' => $original_price,
-        '$in_stock' => $in_stock
-      ]);
+        print_r(Product::all()->toArray());
         // return Command::SUCCESS;
     }
 }

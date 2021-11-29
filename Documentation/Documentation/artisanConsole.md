@@ -60,3 +60,30 @@ Route::get('cache-cache', function (){
     php artisan make:command name  --command=create:name
 
 }
+
+{
+        public function handle()
+    {
+      $title = $this->ask('What is the Product title?');
+      $original_price = $this->ask('What is the Product price?');
+      $in_stock = $this->ask('What is the Product stock?');
+
+      
+
+      Product::create([
+        'title' => $title,
+        'original_price' => $original_price,
+        '$in_stock' => $in_stock
+      ]);
+        // return Command::SUCCESS;
+    }
+}
+
+{
+        public function handle()
+    {
+
+        print_r(Product::all()->toArray());
+        // return Command::SUCCESS;
+    }
+}
