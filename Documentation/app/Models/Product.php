@@ -11,4 +11,5 @@ class Product extends Model
 
     protected $fillable =['title', 'original_price', 'in_stock'];
 }
- 
+
+

@@ -42,13 +42,15 @@ class CreateNewProduct extends Command
       $original_price = $this->ask('What is the Product price?');
       $in_stock = $this->ask('What is the Product stock?');
 
-      
-
       Product::create([
         'title' => $title,
         'original_price' => $original_price,
         '$in_stock' => $in_stock
       ]);
+
+    //   $this->comment('Product created has been successfully!');
+        $this->info('Product has been successfully created');
+        
         // return Command::SUCCESS;
     }
 }
