@@ -1,9 +1,8 @@
 <?php
 
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Artisan;
-use App\Models\User;
-// use DripEmailer;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,28 +16,16 @@ use App\Models\User;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
 
-// -----------------Artisan Command ------ -----------
-// Clousure Commands
-// Artisan::command('mail:send{user}', function($user){
-//     $this->info("Sending email to: {$user}!");
-// });
-// // Type-Hinting Dependencies
-// Artisan::command('mail:send{user}', function(DripEmailer $drip, $user){
-//     $drip->send(User::find($user));
-// });
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-
-//  php artisan config:clear
-
-Route::get('clear-config', function (){
-    Artisan::call('config:clear');
-    return "Config Cleared";
-});
-
-Route::get('cache-cache', function (){
-    Artisan::call('config:cache');
-    return "Config Settings Updated";
-});
+require __DIR__.'/auth.php';
