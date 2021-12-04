@@ -38,9 +38,7 @@ class PostController extends Controller
         $user->Post()->save($Post);
 
 
-        return redirect(route('post.index'));
-
-
+        return redirect(route('post.index'))->with('status', 'success');
     }
 
     /**
@@ -73,7 +71,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('editpost', ['post' => $post]);
     }
 
     /**

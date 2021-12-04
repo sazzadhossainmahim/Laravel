@@ -14,12 +14,18 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
-Route::get('/dashboard', [Dashboard::class, 'showPost'])
-->middleware(['auth'])->name('dashboard');
-
-Route::get('/post', [PostController::class, 'index'])->name('post.index');
-Route::post('/post', [PostController::class, 'create'])->name('post.create');
 
 
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/dashboard', [Dashboard::class, 'showPost'])->name('dashboard');
+    Route::get('/post', [PostController::class, 'index'])->name('post.index');
+    Route::post('/post', [PostController::class, 'create'])->name('post.create');
+
+    // edit
+    Route::get('/post/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
+
+});
 
 require __DIR__ . '/auth.php';
