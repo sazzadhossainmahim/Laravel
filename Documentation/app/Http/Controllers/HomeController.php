@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -25,4 +26,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function queryBuilder(){
+        $user= DB::table('users')->get();
+        return view('welcome',['users'=>$user]);
+    }
+
 }
