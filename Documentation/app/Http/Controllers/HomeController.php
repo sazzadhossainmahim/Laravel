@@ -26,9 +26,13 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function queryBuilder(){
-        $user= DB::table('users')->get();
-        return view('welcome',['users'=>$user]);
-    }
 
+    public function adminView()
+    {
+        return view('admin-view');
+    }
+    // public function queryBuilder(){
+    //     $user= DB::table('users')->get();
+    //     return view('welcome',['users'=>$user]);
+    // }
 }
