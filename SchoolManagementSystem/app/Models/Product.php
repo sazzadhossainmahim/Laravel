@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Product extends Model
 {
     use HasFactory;
-    public function users(){
-        return $this->belongsToMany('App\User');
-    }
+
+    protected $fillable = [
+        'name', 'detail'
+    ];
 }
